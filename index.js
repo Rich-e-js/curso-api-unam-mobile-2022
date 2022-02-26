@@ -32,7 +32,11 @@ app.get('/apellido/:apellido', function (req, res) {
 
 app.post('/password', function (req, res) {
     const{pw} = req.body;
-    res.status(200).send(`Esta es tu contraseña ${pw} No la compartas con nadie !`)
+    if (pw == 'supersecretpassword!') {
+        res.status(200).send(`loggeado`)
+    }else{
+        res.status(401).send(`no loggeado`)
+    }
     
 })
 
@@ -45,6 +49,44 @@ app.post('/resta', function (req, res) {
     })
 })
 
+app.post('/multiplicacion', function (req, res) {
+    const{a, b} = req.body;
+    res.status(201).send({
+        a: a,
+        b: b,
+        resta: parseInt(a) * parseInt(b)
+    })
+})
+
+app.get('/personalinfo', function (req, res) {
+    res.status(200).send({
+        nombre: "Ricardo",
+        apellido: "Juarez",
+        edad: 25,
+        sexo: "cuando se puede",
+        contacto:{
+            telefono: "5530099529",
+            depto: 502,
+            casado: false
+        }
+    })
+})
+
+app.get('/personalinfo/:n', function (req, res) {
+    const{n}= req.params;
+    res.status(200).send({
+        num: n,
+        nombre: "Ricardo",
+        apellido: "Juarez",
+        edad: 25,
+        sexo: "cuando se puede",
+        contacto:{
+            telefono: "5530099529",
+            depto: 502,
+            casado: false
+        }
+    })
+})
 
 app.listen(PORT, ()=>{
     console.log(`puerto http://localhost:${PORT}`)

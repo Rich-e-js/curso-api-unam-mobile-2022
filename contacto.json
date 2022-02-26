@@ -1,0 +1,11 @@
+{
+    "nombre": "Ricardo",
+    "apellido": "Juarez",
+    "edad": 25,
+    "sexo": "cuando se puede",
+    "contacto":{
+        "telefono": "5530099529",
+        "depto": 502,
+        "casado": false
+    }
+}
